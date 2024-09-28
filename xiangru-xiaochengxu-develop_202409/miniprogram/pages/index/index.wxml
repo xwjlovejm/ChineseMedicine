@@ -1,0 +1,85 @@
+<view class="top-box">
+  <view class="index-banner">
+      <swiper class = "index-banner-swiper" indicator-dots="true"  
+        autoplay="true" interval="5000" duration="2000" circular="true">  
+        <block wx:for="{{arr}}" wx:key="id">  
+          <swiper-item>  
+              <image src="{{item}}" class="slide-image" width="100%" height="300rpx"/>  
+          </swiper-item>  
+        </block>  
+     </swiper> 
+    </view>
+</view>
+<!-- 登录、注册 -->
+<view class="center-box">
+    <view class="btnBox">
+      <view class="btnPre {{current==1?'select':''}}" data-code="1" bindtap="click">登录</view>
+      <view class="btnNext {{current==0?'select':''}}" data-code="0" bindtap="click">注册</view>
+    </view>
+
+  <!-- 登录 -->
+  <view class="input-box" wx:if="{{current==1}}">
+    <view class="wei-input">
+      <van-icon name="contact-o" color="rgb(136,31,35)" size="18"/>
+      <input class="input" model:value="{{username}}"
+        type="number"
+        maxlength="11"
+        placeholder-style="color:rgb(136,31,35); font-size:30rpx;"
+        auto-focus placeholder="请输入您的手机号"/>
+    </view>
+    <view class="wei-input">
+      <van-icon name="bag-o" color="rgb(136,31,35)" size="18"/>
+      <input class="input" model:value="{{password}}" 
+      password="true"
+      placeholder-style="color:rgb(136,31,35); font-size:30rpx;"
+      auto-focus placeholder="请输入登录密码"/>
+    </view>
+    <view class="forget" bindtap="forgetregister" >
+      <view style="color:rgb(136,31,35); font-size:30rpx;">忘记密码?</view>
+    </view>
+  </view>
+  <!-- 注册 -->
+  <view class="input-box" wx:if="{{current==0}}">
+    <view class="wei-input">
+      <van-icon name="contact-o" color="rgb(136,31,35)" size="18"/>
+      <input class="input" auto-focus model:value="{{reusername}}" 
+        maxlength="11" type="number"
+       placeholder-style="color:rgb(136,31,35); font-size:30rpx;" placeholder="请输入您的手机号"/>
+    </view>
+    <view class="wei-input">
+      <van-icon name="bag-o" color="rgb(136,31,35)" size="18"/>
+      <input class="input" auto-focus model:value="{{resmscode}}"  placeholder-style="color:rgb(136,31,35); font-size:30rpx;" maxlength="6" type="number" placeholder="请输入验证码"/>
+      <view class="input-code" bindtap="getCode">{{codeText}}</view>
+    </view>
+    <view class="wei-input">
+      <van-icon name="bag-o" color="rgb(136,31,35)" size="18"/>
+      <input class="input" auto-focus model:value="{{repassword}}" placeholder-style="color:rgb(136,31,35); font-size:30rpx;"  password="true" placeholder="请输入密码"/>
+    </view>
+    <view class="wei-input">
+      <van-icon name="bag-o" color="rgb(136,31,35)" size="18"/>
+      <input class="input" auto-focus model:value="{{repasswordR}}" placeholder-style="color:rgb(136,31,35); font-size:30rpx;"  password="true" placeholder="请确认密码"/>
+    </view>
+  </view>
+  <view class="input-box" wx:if="{{current==2}}">
+    <view class="wei-input">
+      <van-icon name="bag-o" color="rgb(136,31,35)" size="18"/>
+      <input class="input" auto-focus model:value="{{resmscode}}"  placeholder-style="color:rgb(136,31,35); font-size:30rpx;" maxlength="6" type="number" placeholder="请输入验证码"/>
+      <view class="input-code" bindtap="getCode">{{codeText}}</view>
+    </view>
+    <view class="wei-input">
+      <van-icon name="bag-o" color="rgb(136,31,35)" size="18"/>
+      <input class="input" auto-focus model:value="{{repassword}}" placeholder-style="color:rgb(136,31,35); font-size:30rpx;"  password="true" placeholder="请输入密码"/>
+    </view>
+    <view class="wei-input">
+      <van-icon name="bag-o" color="rgb(136,31,35)" size="18"/>
+      <input class="input" auto-focus model:value="{{repasswordR}}" placeholder-style="color:rgb(136,31,35); font-size:30rpx;"  password="true" placeholder="请确认密码"/>
+    </view>
+  </view>
+  <view class="sumbit-btn">
+    <button class="button" 
+    style="background-color: rgb(136,31,35);font-size: 30rpx; width: 50%; height: 60rpx; display: flex; align-items: center; justify-content: center; padding: 0 0; border-radius: 40rpx 40rpx 40rpx 40rpx; font-family: '思源宋体 CN';" 
+    type="primary"
+    bind:tap="loginXiangru">立即{{current==1?'登录':(current==0?'注册':'修改')}}</button>
+  </view>
+</view>
+<view class="bottom-box">TEL：香薷中医诊所客服热线 19011321860/19011328060</view>

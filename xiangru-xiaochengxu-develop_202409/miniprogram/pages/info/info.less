@@ -1,0 +1,278 @@
+/* pages/info/info.wxss */
+.info {
+  padding: 60rpx 60rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  .info-top {
+    margin-bottom: 80rpx;
+    .info-header {
+      color: #000;
+      font-weight: 700;
+      font-family: '思源宋体 CN';
+      font-size: 30px;
+      text-align: center;
+    }
+    .info-sec-header {
+      margin-top: 10px;
+      padding: 5px 5px;
+      background-color: rgb(136, 31, 35);
+      color: #fff;
+      border-radius: 4px;
+      font-weight: 400;
+      font-family: '思源宋体 CN';
+      font-size: 15px;
+      text-align: center;
+    }
+  }
+  .info-cont {
+    position: fixed;
+    top: 22%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    width: 80%;
+    height: 60%;
+    box-shadow: 0px 0px 10rpx 4rpx #ddd;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    .info-cont-header {
+      margin-top: 30rpx;
+      color: #000;
+      font-weight: 500;
+      font-family: '思源宋体 CN';
+      font-size: 20px;
+      text-align: center;
+      font-weight: 700;
+    }
+    .info-question {
+      color: #000;
+      font-weight: 500;
+      font-family: '思源宋体 CN';
+      font-size: 20px;
+      text-align: center;
+      font-weight: 700;
+      margin-top: 15rpx;
+    }
+    .info-question-1 {
+      color: #000;
+      font-weight: 500;
+      font-family: '思源宋体 CN';
+      font-size: 25px;
+      text-align: center;
+      font-weight: 700;
+      margin-top: 30rpx;
+    }
+    .bd view{
+font-size: 20px;
+    }
+    .bd text{
+     font-size: 15px;
+     color: #504f4f;
+    }
+    .info-question-2 {
+      color: #000;
+      font-weight: 500;
+      font-family: '思源宋体 CN';
+      font-size: 25px;
+      text-align: center;
+      font-weight: 700;
+      margin-top: 200rpx;
+    }
+    .info-checkbox{
+      // margin-top: 30rpx;
+      // margin-left: 10%;
+      // margin-right: 10%;
+      // margin-bottom: 16rpx;
+      // min-width:20%;
+      width: 50%;
+      padding: 30rpx 0;
+    }
+    .btnBox {
+      margin-top: 15%;
+      display: flex;
+      overflow: hidden;
+      justify-content: center;
+     
+      .btnPre {
+        border: 1px solid rgb(136, 31, 35);
+        border-radius: 100rpx 0 0 100rpx;
+        box-sizing: border-box;
+        padding: 6rpx 30rpx;
+        line-height: 16px;
+        // font-weight: 400;
+        font-family: "思源宋体 CN";
+        text-align: center;
+      }
+      .select{
+        background-color: rgb(136, 31, 35);
+         color: #fff;
+      }
+      .btnNext {
+        // background-color: rgb(136, 31, 35);
+        // color: #fff;
+        box-sizing: border-box;
+        border: 1px solid rgb(136, 31, 35);
+        padding: 3px 12px;
+        text-align: center;
+        font-size: 16px;
+        line-height: 16px;
+        // font-weight: 400;
+        font-family: "思源宋体 CN";
+        border-radius: 0px 100rpx 100rpx 0;
+      }
+      .selects{
+        border-radius: 0;
+      }
+    }
+  }
+
+
+
+}
+
+/* 最底部 */
+.bottom-box{
+  position:fixed; 
+  bottom: 10rpx;
+  width:100%;
+  font-size: 24rpx;
+  color: gray;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15rpx;
+}
+
+.basic{
+  display: flex; 
+  // margin: 40rpx 20rpx 20rpx;
+  flex-direction: column;
+}
+.sjsd{
+  margin-top: 40rpx;
+}
+.basic-model{
+  display: flex; 
+  flex-direction: row;
+  align-items: baseline;
+  // margin-top: 50rpx;
+  // margin-bottom: 10rpx;
+  padding: 30rpx 0rpx;
+}
+
+.basic-input{
+  border-bottom: 1rpx solid gray;
+  width: 72%;
+}
+.custom-radio{
+  width: 72%;
+}
+.SexRadio{
+  width: 50%;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+.SexRadio view{
+  justify-content: center;
+}
+.basic-info{
+//   font-weight: bold;
+//   font-size: larger;
+font-family:'思源宋体 CN';
+text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    width: 25%;
+}
+.custom-input-desc {
+  width: 90%;
+  /* 设置输入框的宽度为200rpx */
+  /* 其他样式，如高度、边框、内边距等 */
+  // min-height: 200rpx;
+  height: 400rpx;
+  max-height: 400rpx;
+  padding: 0 10rpx;
+  margin-top: 40rpx;
+  margin-left: 20rpx;
+  border: 1rpx solid #ccc;
+}
+
+
+.custom-input {
+  width: 50%;
+  /* 设置输入框的宽度为200rpx */
+  /* 其他样式，如高度、边框、内边距等 */
+  height: 40rpx;
+margin-left: 2%;
+  margin-top: 40rpx;
+  border-bottom: 1rpx solid #881f23;
+  font-size: 34rpx;
+  font-family: "Microsoft YaHei";
+}
+
+
+.layer_privacy {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.agree_box {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 25%;
+  background: #ffffff;
+  padding: 25rpx;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+
+.agree_box .tit {
+  text-align: center;
+  line-height: 50rpx;
+  margin-bottom: 40rpx;
+}
+
+.agree_box .btn_group {
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20rpx;
+}
+
+.disagree_btn {
+  line-height: 70rpx;
+  color: #333;
+  border-radius: 6rpx;
+  padding: 0 40rpx;
+}
+
+.agree_btn {
+  background-color: #0052D9;
+  line-height: 70rpx;
+  color: #fff;
+  border-radius: 6rpx;
+  padding: 0 40rpx;
+}
+
+.content .dec_link,
+.content .dec {
+  display: inline-block;
+  font-size: 26rpx;
+  color: #333;
+  line-height: 44rpx;
+}
+.basict{
+  height: 75%;
+}

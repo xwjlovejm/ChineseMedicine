@@ -1,0 +1,235 @@
+/* pages/info/info.wxss */
+.report {
+  padding: 60rpx 60rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  .report-top {
+    margin-bottom: 80rpx;
+    .report-header {
+      color: #000;
+      font-weight: 700;
+      font-family: '思源宋体 CN';
+      font-size: 40px;
+      text-align: center;
+    }
+    .report-sec-header {
+      margin-top: 5px;
+      padding: 2px 5px;
+      background-color: rgb(136, 31, 35);
+      color: #fff;
+      border-radius: 4px;
+      font-weight: 400;
+      font-family: '思源宋体 CN';
+      font-size: 17px;
+      text-align: center;
+    }
+  }
+  .report-cont {
+    position: fixed;
+    top: 25%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    width: 80%;
+    height: 60%;
+    box-shadow: 0px 0px 10rpx 4rpx #ddd;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+
+    .report-cont-header {
+      margin-top: 25rpx;
+      color: #881f23;
+      font-weight: 500;
+      font-family: '思源宋体 CN';
+      font-size: 40rpx;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .report-cont-other-head{
+      color: black;
+      margin-top: 20rpx;
+      font-weight: 500;
+      font-family: '思源宋体 CN';
+      font-size: 45rpx;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .report-cont-other-head-result{
+      color: black;
+      margin-top: 20rpx;
+      font-weight: 500;
+      font-family: '思源宋体 CN';
+      font-size: 45rpx;
+      text-align: left;
+      font-weight: 700;
+     width: 90%;
+     margin: 0 auto;
+     padding: 20rpx 0 0 0;
+    }
+    .gzh{
+      font-size: 30rpx;
+      text-align: center;
+      padding: 40rpx;
+    }
+    .report-cont-other-head-result-desc {
+      border: none; /* 移除默认边框 */  
+      padding: 0 10rpx; /* 根据需要调整内边距 */  
+    
+ margin: 0 auto;
+ padding: 20rpx 0 0 0;
+ font-size:35rpx;
+ max-width: 490rpx; 
+   word-wrap: break-word; 
+   white-space: normal;
+    }
+
+    .report-checkbox{
+    margin: 20rpx 0;
+width: 50%;
+    }
+
+    .report-cont-progress{
+      margin-top: 20rpx;
+      margin-bottom: 20rpx;
+      margin-left: 40rpx;
+      margin-right: 40rpx;
+    }
+
+    .report-cont-desc{
+      width: 90%;
+      /* 设置输入框的宽度为200rpx */
+      /* 其他样式，如高度、边框、内边距等 */
+      min-height: 60rpx;
+      max-height: 180rpx;
+      margin-top: 2rpx;
+      margin-left: 20rpx;
+      text-align: center;
+    }
+
+    .report-cont-image{
+      text-align: center;
+      margin-top: 30rpx;
+      image{
+        width: 300rpx;
+       height: 300rpx;
+      }
+    }
+
+    .report-cont-image-poeple{
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .report-cont-bottom{
+      width: 90%;
+      min-height: 60rpx;
+      max-height: 200rpx;
+      text-align: center;
+    }
+  }
+}
+
+.report-bottom{
+  position:fixed; 
+  bottom: 10rpx;
+  width:100%;
+  font-size: 30rpx;
+  color: red;
+  font-family: "思源宋体 CN";
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80rpx;
+}
+
+/* 最底部 */
+.report-bottom-box{
+  position:fixed; 
+  bottom: 10rpx;
+  width:100%;
+  font-size: 24rpx;
+  color: gray;
+  font-family: "思源宋体 CN";
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10rpx;
+}
+
+.btnBox {
+  position: fixed;
+  width: 40%;
+  left: 30%;
+  bottom: 19%;
+  margin-top: 40rpx;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+ 
+  .btnPre {
+    border: 2rpx solid rgb(136, 31, 35);
+    border-radius: 20rpx 0 0 20rpx;
+    box-sizing: border-box;
+    padding: 6rpx 24rpx;
+    line-height: 44rpx;
+    // font-weight: 400;
+    font-family: "思源宋体 CN";
+    text-align: center;
+  }
+  .select{
+    background-color: rgb(136, 31, 35);
+     color: #fff;
+  }
+  .btnNext {
+    // background-color: rgb(136, 31, 35);
+    // color: #fff;
+    box-sizing: border-box;
+    border: 2rpx solid rgb(136, 31, 35);
+    padding: 6rpx 24rpx;
+    text-align: center;
+    font-size: 32rpx;
+    line-height: 44rpx;
+    // font-weight: 400;
+    font-family: "思源宋体 CN";
+    border-radius: 0px 20rpx 20rpx 0;
+  }
+  .selects{
+    border-radius: 0;
+  color: #fff;
+  background-color: #881f23;
+
+  }
+}
+.reportxx{
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 0 auto;
+}
+.reportxxs{
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 30rpx;
+  
+}
+.reportxxs view{
+  padding: 20rpx;
+}
+.reportyu{
+  height:auto;
+}
+.gzh{
+  font-size: 40rpx;
+  text-align: center;
+  padding: 40rpx;
+}

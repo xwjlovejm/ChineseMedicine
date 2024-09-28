@@ -1,0 +1,564 @@
+<!--pages/info/info.wxml-->
+<view class="info">
+  <view class="info-top">
+    <view class="info-header">香薷中医体检</view>
+    <view class="info-sec-header">国医大师携手数百位专家倾力打造</view>
+  </view>
+  <view class="info-cont">
+    <view hidden="{{basicHiddenFlag}}" class="basic basict">
+      <view class="basic-model sjsd">
+        <view class="basic-info">姓名：</view>
+        <input type="text" class="basic-input" model:value="{{userName}}"></input>
+      </view>
+      <view class="basic-model">
+        <view class="basic-info">性别：</view>
+        <van-radio-group value="{{ gender }}" disabled = "{{genderEditFlag}}" class="custom-radio" direction ="horizontal" 
+         bind:change="OnRadioChangeGender">
+          <van-radio class="SexRadio" name="male">男</van-radio>
+          <van-radio class="SexRadio" name="female">女</van-radio>
+        </van-radio-group>
+      </view>
+      <view class="basic-model">
+        <view class="basic-info">年龄：</view>
+        <input type="number" class="basic-input" model:value="{{age}}"></input>
+      </view>
+      <view class="basic-model">
+        <view class="basic-info">单位：</view>
+        <input type="text" class="basic-input" model:value="{{company}}"></input>
+      </view>
+      <!-- <view class="basic-model">
+        <view class="basic-info">邀请码：</view>
+        <input type="text" class="basic-input" model:value="{{inviteCode}}"></input>
+      </view> -->
+    </view>
+    <!-- ----------------------------------------------------------------- -->
+    <view hidden="{{aHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">明显感到(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Avalue}}" 
+         bind:change="onChangeA" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="A1" shape="square">头晕</van-checkbox>
+          <van-checkbox class="info-checkbox" name="A2" shape="square">头沉</van-checkbox>
+          <van-checkbox class="info-checkbox" name="A3" shape="square" bindtap="btnstt">头痛</van-checkbox>
+       </van-checkbox-group>
+       <van-checkbox-group class="checkbox-group"
+         value="{{A3childvalue}}" 
+         bind:change="onChangeA3Child" 
+         direction = "horizontal" wx:if="{{arrstt}}">
+         <view style="width: 100%;font-size: 35rpx;font-weight: 700;text-align: center;">头痛发生部位（多选）</view>
+            <van-checkbox class="info-checkbox" name="A31" shape="square">前额</van-checkbox>
+            <van-checkbox class="info-checkbox" name="A32" shape="square">两侧</van-checkbox>
+            <van-checkbox class="info-checkbox" name="A33" shape="square">头顶</van-checkbox>
+            <van-checkbox class="info-checkbox" name="A34" shape="square">后脑</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <!-- <view hidden="{{a3HiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">头痛发生部位(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{A3childvalue}}" 
+         bind:change="onChangeA3Child" 
+         direction = "horizontal">
+            <van-checkbox class="info-checkbox" name="A31" shape="square">前额</van-checkbox>
+            <van-checkbox class="info-checkbox" name="A32" shape="square">两侧</van-checkbox>
+            <van-checkbox class="info-checkbox" name="A33" shape="square">头顶</van-checkbox>
+            <van-checkbox class="info-checkbox" name="A34" shape="square">后脑</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view> -->
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{bHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">症状明显的打勾(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Bvalue}}" 
+         bind:change="onChangeB" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="B1" shape="square">容易感冒</van-checkbox>
+          <van-checkbox class="info-checkbox" name="B2" shape="square">容易低烧</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{cHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">症状明显的打勾(单选):</view>
+      <view style="height:500rpx;">
+        <van-radio-group value="{{Cvalue}}" max = "0" 
+        bind:change="onChangeC" 
+        direction = "horizontal">
+          <van-radio class="info-checkbox" name="C1" shape="square" bindtap="btnsdhs">无汗</van-radio>
+          <van-radio class="info-checkbox" name="C2" shape="square" bindtap="btnsdh">汗多</van-radio>
+      </van-radio-group>
+     
+      <van-checkbox-group class="checkbox-group"
+         value="{{C2childvalue}}" 
+         bind:change="onChangeC2Child" 
+         direction = "horizontal" wx:if="{{arrsdh}}">
+         <view style="width: 100%;font-size: 35rpx;font-weight: 700;text-align: center;">汗多发生部位（多选）</view>
+          <van-checkbox  class="info-checkbox" name="C21" shape="square">头部</van-checkbox>
+          <van-checkbox  class="info-checkbox" name="C22" shape="square">手脚心</van-checkbox>
+          <van-checkbox class="info-checkbox" name="C23" shape="square">其他部位</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <!-- <view hidden="{{c2HiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">明细出汗多的部位(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{C2childvalue}}" 
+         bind:change="onChangeC2Child" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="C21" shape="square">头部</van-checkbox>
+          <van-checkbox class="info-checkbox" name="C22" shape="square">手脚心</van-checkbox>
+          <van-checkbox class="info-checkbox" name="C23" shape="square">其他部位</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view> -->
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{dHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">症状明显的打勾(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Dvalue}}" 
+         bind:change="onChangeD" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="D1" shape="square">明显怕风吹</van-checkbox>
+          <van-checkbox class="info-checkbox" name="D2" shape="square">经常肢体麻木</van-checkbox>
+          <van-checkbox class="info-checkbox" name="D3" shape="square">四肢疼痛</van-checkbox>
+          <van-checkbox class="info-checkbox" name="D4" shape="square">四肢沉重</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{eHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">症状明显的打勾(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Evalue}}" 
+         bind:change="onChangeE" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="E1" shape="square">感到明显怕冷</van-checkbox>
+          <van-checkbox class="info-checkbox" name="E2" shape="square">感到明显怕热</van-checkbox>
+          <van-checkbox class="info-checkbox" name="E3" shape="square">手脚冰凉</van-checkbox>
+          <van-checkbox class="info-checkbox" name="E4" shape="square">手脚心热</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{fHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">症状明显的打勾(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Fvalue}}" 
+         bind:change="onChangeF" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="F1" shape="square">烦躁</van-checkbox>
+          <van-checkbox class="info-checkbox" name="F2" shape="square">不顺心</van-checkbox>
+          <van-checkbox class="info-checkbox" name="F3" shape="square">压抑</van-checkbox>
+          <van-checkbox class="info-checkbox" name="F4" shape="square">焦虑</van-checkbox>
+          <van-checkbox class="info-checkbox" name="F5" shape="square">心慌</van-checkbox>
+          <van-checkbox class="info-checkbox" name="F6" shape="square">胸闷</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{gHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">睡眠状况选项(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Gvalue}}" 
+         bind:change="onChangeG" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="G1" shape="square">梦多</van-checkbox>
+          <van-checkbox class="info-checkbox" name="G2" shape="square">易醒</van-checkbox>
+          <van-checkbox class="info-checkbox" name="G3" shape="square">入睡难</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{hHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">症状明显的打勾(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Hvalue}}" 
+         bind:change="onChangeH" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="H1" shape="square" bindtap="btns">口渴</van-checkbox>
+          <van-checkbox wx:if="{{arrs==true}}" class="info-checkbox" name="H2" shape="square">喝水解渴</van-checkbox>
+          <van-checkbox wx:if="{{arrs==true}}" class="info-checkbox" name="H3" shape="square">喝水不解渴</van-checkbox>
+          <van-checkbox class="info-checkbox" name="H4" shape="square">口苦</van-checkbox>
+          <van-checkbox class="info-checkbox" name="H5" shape="square">唇干</van-checkbox>
+          <van-checkbox class="info-checkbox" name="H6" shape="square">眼睛干涩</van-checkbox>
+          <van-checkbox class="info-checkbox" name="H7" shape="square">视物模糊</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{iHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">经常出现(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Ivalue}}" 
+         bind:change="onChangeI" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="I1" shape="square">口腔溃疡</van-checkbox>
+          <van-checkbox class="info-checkbox" name="I2" shape="square">面部长痘</van-checkbox>
+          <van-checkbox class="info-checkbox" name="I3" shape="square">皮肤油</van-checkbox>
+          <van-checkbox class="info-checkbox" name="I4" shape="square">面部暗黄</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{jHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">明显出现(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Jvalue}}" 
+         bind:change="onChangeJ" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="J1 " shape="square">食欲下降 </van-checkbox>
+          <van-checkbox class="info-checkbox" name="J2" shape="square">经常恶心</van-checkbox>
+          <van-checkbox class="info-checkbox" name="J3" shape="square">经常打嗝</van-checkbox>
+          <van-checkbox class="info-checkbox" name="J4" shape="square">烧心反酸</van-checkbox>
+          <van-checkbox class="info-checkbox" name="J5" shape="square">胃胀(肚脐上)</van-checkbox>
+          <van-checkbox class="info-checkbox" name="J6" shape="square">腹胀(肚脐下)</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{kHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">精力状况(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Kvalue}}" 
+         bind:change="onChangeK" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="K1" shape="square">午饭后明显犯困</van-checkbox>
+          <van-checkbox class="info-checkbox" name="K2" shape="square">平时乏力没精神</van-checkbox>
+          <van-checkbox class="info-checkbox" name="K3" shape="square">气短、叹气</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{lHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">凉饮凉食反应(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Lvalue}}" 
+         bind:change="onChangeL" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="L1" shape="square">吃凉腹泻</van-checkbox>
+          <van-checkbox class="info-checkbox" name="L2" shape="square">吃凉腹痛</van-checkbox>
+          <van-checkbox class="info-checkbox" name="L3" shape="square">吃凉的食物没事</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{mHiddenFlag}}"class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">经常感到(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Mvalue}}" 
+         bind:change="onChangeM" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="M1" shape="square">肠鸣(咕咕叫)</van-checkbox>
+          <van-checkbox class="info-checkbox" name="M2" shape="square">排气(放屁)</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+
+      <!-- ----------------------------------------------------------------- -->
+    <view hidden="{{nHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">大便问题(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Nvalue}}" 
+         bind:change="onChangeN" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="N1" shape="square"><text decode="{{true}}">便干&emsp;&emsp;</text></van-checkbox>
+          <van-checkbox class="info-checkbox" name="N2" shape="square">便稀</van-checkbox>
+          <van-checkbox class="info-checkbox" name="N3" shape="square">先干后稀</van-checkbox>
+          <van-checkbox class="info-checkbox" name="N4" shape="square">数日解1次</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>  
+    <!-- ----------------------------------------------------------------- -->
+    <view hidden="{{oHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">小便问题(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Ovalue}}" 
+         bind:change="onChangeO" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="O1" shape="square">尿频</van-checkbox>
+          <van-checkbox class="info-checkbox" name="O2" shape="square">尿急</van-checkbox>
+          <van-checkbox class="info-checkbox" name="O3" shape="square">尿不尽</van-checkbox>
+          <van-checkbox class="info-checkbox" name="O4" shape="square">泡沫尿</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{pHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">经常出现(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Pvalue}}" 
+         bind:change="onChangeP" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="P1" shape="square">腰酸</van-checkbox>
+          <van-checkbox class="info-checkbox" name="P2" shape="square">腰痛</van-checkbox>
+          <van-checkbox class="info-checkbox" name="P3" shape="square">水肿(明显浮肿或按压有坑)</van-checkbox>
+       </van-checkbox-group>
+       <view hidden="{{p31HiddenFlag}}">
+        <view style="display: flex; ">
+          <view style="margin-top: 40rpx;margin-left: 20rpx;">水肿部位：</view>
+          <input type="text" class ="custom-input" model:value="{{P31value}}"/>
+        </view>
+      </view>
+      </view>
+        <!-- ----------------------------------------------------------------- -->
+      
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{qHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">月经周期(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Qvalue}}" 
+         bind:change="onChangeQ" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="Q1" shape="square">提前(7天以上)</van-checkbox>
+          <van-checkbox class="info-checkbox"name="Q2" shape="square">错后(7天以上)</van-checkbox>
+          <van-checkbox class="info-checkbox" name="Q3" shape="square">忽前忽后(7天以上)</van-checkbox>
+          <van-checkbox class="info-checkbox" name="Q4" shape="square">经期时长超过7天以上</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{rHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">经期状况(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Rvalue}}" 
+         bind:change="onChangeR" 
+         direction = "horizontal">
+            <van-checkbox class="info-checkbox" name="R1" shape="square" style="padding: 20rpx 0;">量多</van-checkbox>
+            <van-checkbox class="info-checkbox" name="R2" shape="square" style="padding: 20rpx 0;">量少</van-checkbox>
+            <van-checkbox class="info-checkbox" name="R3" shape="square"  style="padding: 20rpx 0;">颜色暗</van-checkbox>
+            <van-checkbox class="info-checkbox" name="R4" shape="square" style="padding: 20rpx 0;">颜色淡</van-checkbox>
+            <van-checkbox class="info-checkbox" name="R5" shape="square" style="padding: 20rpx 0;">明显血块</van-checkbox>
+            <van-checkbox class="info-checkbox" name="R6" shape="square" style="padding: 20rpx 0;">痛经</van-checkbox>
+            <van-checkbox class="info-checkbox" name="R7" shape="square" style="padding: 20rpx 0;">乳房胀痛</van-checkbox>
+            <van-checkbox class="info-checkbox" name="R8" shape="square" style="padding: 20rpx 0;">小腹坠胀感</van-checkbox>
+            <van-checkbox class="info-checkbox" name="R9" shape="square" style="padding: 20rpx 0;">阴道瘙痒</van-checkbox>
+            <van-checkbox class="info-checkbox" name="R10" shape="square" style="padding: 20rpx 0;">小腹摸到包块</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{sHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">白带异常(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Svalue}}" 
+         bind:change="onChangeS" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="S1" shape="square">白色</van-checkbox>
+          <van-checkbox class="info-checkbox" name="S2" shape="square">黄色</van-checkbox>
+          <van-checkbox class="info-checkbox" name="S3" shape="square">粘稠</van-checkbox>
+          <van-checkbox class="info-checkbox" name="S4" shape="square">稀薄</van-checkbox>
+          <van-checkbox class="info-checkbox" name="S5" shape="square">偏多</van-checkbox>
+          <van-checkbox class="info-checkbox" name="S6" shape="square">偏少</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{tHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">男性功能(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Tvalue}}" 
+         bind:change="onChangeT" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="T1" shape="square">阴囊潮湿</van-checkbox>
+          <van-checkbox class="info-checkbox" name="T2" shape="square">勃起无力</van-checkbox>
+          <van-checkbox class="info-checkbox" name="T3" shape="square">时间短</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{uHiddenFlag}}" class="basict">
+      <view class="info-cont-header">请在症状明显栏目打勾</view>
+      <view class="info-cont-header">没有可空着不填</view>
+      <view class="info-question">个人嗜好(多选):</view>
+      <view style="height:500rpx;">
+        <van-checkbox-group class="checkbox-group"
+         value="{{Uvalue}}" 
+         bind:change="onChangeU" 
+         direction = "horizontal">
+          <van-checkbox class="info-checkbox" name="U1" shape="square">烟酒嗜好</van-checkbox>
+          <van-checkbox class="info-checkbox" name="U2" shape="square">熬夜习惯</van-checkbox>
+          <van-checkbox class="info-checkbox" name="U3" shape="square">容易过敏</van-checkbox>
+       </van-checkbox-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{vHiddenFlag}}" class="basict">
+      <view class="info-question-1 bd">
+      <view>既往病史</view>
+      <text>(含检查指标、现服用药物)</text></view>
+     
+      <view style="height:500rpx;">
+        <textarea class ="custom-input-desc" type="text"
+          maxlength="50"
+          auto-focus="true"
+          rows="20"
+          
+          placeholder="(50字以内)"
+         model:value="{{V1value}}"></textarea>
+      </view>
+    </view>
+	<view hidden="{{z1HiddenFlag}}" class="basict">
+	  <view class="info-question-1" style="font-size: 20px;">简要描述您最想解决的疾病问题：</view>
+	  <view style="height:500rpx;">
+	    <textarea class ="custom-input-desc" type="text"
+	      maxlength="50"
+	      auto-focus="true"
+	      rows="20"
+	      
+	      placeholder="(50字以内)"
+	    type="text" model:value="{{Z1Value}}"></textarea>
+	  </view>
+	</view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{wHiddenFlag}}" class="basict">
+        <view class="info-question-2" style="margin-top: 40rpx;font-size: 20px;">无专业仪器，可搭脉估算：</view>
+      <view class="info-question-2" style="margin-top: 80rpx;">心率(次/分钟)</view>
+     
+      <view style="height:80%;margin-left:0 auto;">
+        <input style="width: 80%;margin-left: 10%;" class ="custom-input" type="number" 
+         model:value="{{W1value}}">
+         </input>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{xHiddenFlag}}" class="basict">
+      <view class="info-question-1">您对自身健康的看法：</view>
+      <view style="height:500rpx;">
+        <van-radio-group class="checkbox-group"
+         value="{{Xvalue}}" 
+         bind:change="onChangeX" 
+         direction = "horizontal">
+          <van-radio class="info-checkbox" name="X1" shape="square" >需要治疗</van-radio>
+          <van-radio class="info-checkbox" name="X2" shape="square">不严重</van-radio>
+          <van-radio class="info-checkbox" name="X3" shape="square">先检查了解下</van-radio>
+       </van-radio-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{yHiddenFlag}}" class="basict">
+      <view class="info-question-1">您对中药的接受程度：</view>
+      <view style="height:500rpx;">
+        <van-radio-group class="checkbox-group"
+         value="{{Yvalue}}" 
+         bind:change="onChangeY" 
+         direction = "horizontal">
+          <van-radio class="info-checkbox" name="Y1" shape="square">认可</van-radio>
+          <van-radio class="info-checkbox" name="Y2" shape="square">一般</van-radio>
+          <van-radio class="info-checkbox" name="Y3" shape="square">不认可</van-radio>
+       </van-radio-group>
+      </view>
+    </view>
+      <!-- ----------------------------------------------------------------- -->
+     
+      <!-- ----------------------------------------------------------------- -->
+      <view hidden="{{z2HiddenFlag}}" class="basict">
+      <view class="info-question-1">请拍照您的舌苔(吐舌头)照片上传</view>
+      <view style="height:500rpx;text-align: center;margin-bottom: 60rpx;">
+        <van-uploader 
+          preview-size = "400rpx"
+          file-list="{{ fileList }}" 
+          max-count="1" 
+          bind:after-read="afterRead"
+          deletable = "true"
+          accept="image" 
+          bind:delete="delete"/>
+      </view>
+    </view>
+     
+    <view class="btnBox">
+      <view class="btnPre {{current==1?'select':''}}" wx:if="{{index!=-1}}" bindtap="toPrePage">上一页</view>
+      <view class="btnNext {{current==0?'select':''}} {{index==-1?'selects':''}}"  bindtap="toNextPage">下一页</view>
+    </view>
+  </view>
+
+   <!-- ====================================================================--->
+   <van-popup 
+          show="{{ showPrivacyPopup }}"
+          position="bottom"
+          custom-style = "height:20%;" 
+          bind:close="onClose">
+          <view class="agree_box">
+              <view class="tit">用户隐私保护提示</view>
+              <view class="content">
+                  <view class="dec">请仔细阅读</view>
+                  <view class="dec_link" style="color:blue" bindtap="openPrivacyContract">{{privacyContent}}</view>
+                  <view class="dec">当您点击“同意并继续”时，即表示你已理解并同意该条款内容。如您点击“不同意并退出”，将无法使用香薷小程序提交功能。</view>
+                  <view class="btn_group">
+                  <button class="disagree_btn" bindtap="handleDisagree">不同意并退出</button>
+                  <button class="agree_btn" open-type="agreePrivacyAuthorization" bindagreeprivacyauthorization="handleAgree">同意并继续</button>
+                  </view>
+              </view>
+          </view>
+          </van-popup>
+</view>
+<view class="bottom-box">TEL：香薷中医诊所客服热线 19011321860/19011328060</view>

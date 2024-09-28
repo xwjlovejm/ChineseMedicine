@@ -1,0 +1,190 @@
+<!--pages/info/info.wxml-->
+<view class="report">
+  <view class="report-top">
+    <view class="report-header">香薷体检报告</view>
+    <view class="report-sec-header">国医大师携手数百位专家倾力打造</view>
+  </view>
+
+  <view class="report-cont">
+    <!-- ---------------------------------------1------------------------------------------- -->
+
+    <view wx:if="{{index==0}}" class="reportyu">
+     
+      <view class="report-cont-desc" style="margin-top: 30rpx;font-size: 40rpx;font-weight: 700;">【参照标准】</view>
+      <view class ="report-cont-desc"  style="margin-top: 20rpx;color: rgb(0,146,69);">100分至75分：基本健康人群；</view>
+      <view class ="report-cont-desc" style="color: rgb(247,147,30);">75分至50分：亚健康人群；</view>
+      <view class ="report-cont-desc" style="color: rgb(136,31,35);">50分至0分：疑似疾病人群；</view>
+      <view class ="report-cont-image">
+        <image  src="../../images/wechat.jpg" show-menu-by-longpress="true"></image>
+        <view>关注公众号</view>
+      </view>
+    </view>
+	<view wx:if="{{index==1}}" class="reportyu">
+	  <view class="report-cont-header" style="color: rgb({{scoreColor}});" >【健康评估】</view>
+	  <view class="report-cont-header" style="color: rgb({{scoreColor}});">根据香薷中医大模型评估</view>
+	  <view class="report-cont-header" style="color: rgb({{scoreColor}});">您的评分为{{score}}分</view>
+	  <view class="report-cont-progress">
+	    <van-progress percentage="{{score}}" 
+	    stroke-width="30rpx"
+	    show-pivot="false"
+	    pivot-text=" "
+	    color="rgb({{scoreColor}})"
+	    />
+	  </view>
+	  
+	  <view class ="report-cont-image">
+	    <image  src="../../images/wechat.jpg" show-menu-by-longpress="true" style="width:150rpx;height: 150rpx;margin-top:60rpx;"></image>
+	    <view>关注公众号</view>
+	  </view>
+	</view>
+    <!-- ---------------------------------------2------------------------------------------- -->
+    <view wx:for="{{list}}" wx:for-index="ins">
+    
+    
+    <view wx:if="{{index==2+ins}}" class="reportyu">
+          <view class="report-cont-other-head">您的提交选项如下</view>
+          
+          <view class="reportxx" >
+            <block wx:for="{{list[ins]}}" wx:key="indexs">  
+              <view  class = "report-checkbox">
+                <van-checkbox shape = "square" value="true">{{item}}</van-checkbox>
+              </view>
+            </block>
+      
+        </view>
+      
+        </view>
+      </view>
+	  <view wx:if="{{index==2+numa&&jkla==1}}" class="reportyu">
+	      <view class="report-cont-other-head">心率</view>
+	    <view class="reportxxs" style="font-size: 40rpx;">
+	    <view style="color: #881f23;font-weight: 600;">{{submitQuestion.w1value}}</view>次/分钟
+	  </view>
+	  
+	    </view>
+   <view wx:if="{{index==2+jkla+numa&&jklb==1}}" class="reportyu">
+      <view class="report-cont-other-head">水肿部位</view>
+    <view class="reportxxs" style="font-size: 40rpx;">
+    <view>{{submitQuestion.p31value}}</view>
+  </view>
+
+    </view>
+	<view wx:if="{{index==2+jkla+jklb+numa&&jklc==1}}" class="reportyu">
+	    <view class="report-cont-other-head">既往病史</view>
+	  <view class="reportxxs">
+
+	  <view>{{submitQuestion.v1value}}</view>
+	  
+	</view>
+	
+	  </view>
+	  <view wx:if="{{index==2+jkla+jklb+jklc+numa&&jkld==1}}" class="reportyu">
+	      <view class="report-cont-other-head">主要症状描述</view>
+	    <view class="reportxxs">
+	    
+	    <view>{{submitQuestion.z1value}}</view>
+
+	  </view>
+	  
+	    </view>
+		<view wx:if="{{index==2+jkla+jklb+jklc+jkld+numa&&jkle==1}}" class="reportyu">
+		    <view class="report-cont-other-head">舌苔图片</view>
+		  <view class="reportxxs">
+		  <view><image src="{{submitQuestion.z2value}}" style="width: 80%;"></image></view>
+		</view>
+		
+		  </view>
+    <!-- ---------------------------------------3------------------------------------------- -->
+    <view wx:if="{{index==2+jkla+jklb+jklc+jkld+jkle+numa}}" class="reportyu">
+      <view class="report-cont-other-head">主要疾病部位</view>
+      <view class ="report-cont-image-poeple" style="font-size: 26rpx;">
+        <view style="width: 60rpx;position: relative;">
+          <view style="color: rgb({{xinColor}});position: absolute;top: 27%;">心</view>
+          
+          <view style="color: rgb({{ganColor}});position: absolute;top: 35%;">肝</view>
+		  <view style="color: rgb({{danColor}});position: absolute;top: 40%;">胆</view>
+   
+          <view style="color: rgb({{shenColor}});position: absolute;top: 47%;">肾</view>
+		   <view style="color: rgb({{changColor}});position: absolute;top: 54%;">大肠</view>
+		    <view style="color: rgb({{shenColor}});position: absolute;top: 63%;">膀胱</view>
+        </view>
+        <image style="width: 80%;height: 400rpx;margin-top: 100rpx;margin-bottom: 100rpx;" src="../../images/sttp.png"></image>
+        <view style="width: 60rpx;position: relative;">
+          <view style="color: rgb({{feiColor}});position: absolute;top: 24%;">肺</view>
+         
+          <view style="color: rgb({{piColor}});position: absolute;top: 37%;">脾</view>
+          <view style="color: rgb({{weiColor}});position: absolute;top: 44%;">胃</view>
+		  <view style="color: rgb({{changColor}});position: absolute;top: 54%;">小肠</view>
+        </view>
+      </view>
+    </view>
+    <!-- ---------------------------------------4------------------------------------------- -->
+  <view wx:for="{{listb}}" wx:for-index="insb">
+      
+      
+      <view wx:if="{{index==3+jkla+jklb+jklc+jkld+jkle+numa+insb}}" class="reportyu">
+            <view class="report-cont-other-head">体质诊断</view>
+            
+           <view class ="report-cont-other-head-result-desc" wx:for="{{listb[insb]}}">
+           {{item}}
+           </view>
+        
+          </view>
+        </view>
+  	  <view wx:for="{{listc}}" wx:for-index="insc">
+  	  
+  	  
+  	  <view wx:if="{{index==3+jkla+jklb+jklc+jkld+jkle+numa+numb+insc}}" class="reportyu">
+  	        <view class="report-cont-other-head">发病倾向</view>
+  	        
+  	       <view class ="report-cont-other-head-result-desc" wx:for="{{listc[insc]}}">
+  	       {{item}}
+  	       </view>
+  	    
+  	      </view>
+  	    </view>
+  		<view wx:for="{{listd}}" wx:for-index="insd">
+  		
+  		
+  		<view wx:if="{{index==3+jkla+jklb+jklc+jkld+jkle+numa+numb+numc+insd}}" class="reportyu">
+  		      <view class="report-cont-other-head">疾病诊断</view>
+  		      
+  		      <view class ="report-cont-other-head-result-desc" wx:for="{{listd[insd]}}">
+  		      {{item}}
+  		      </view>
+  		  
+  		    </view>
+  		  </view>
+  		  <view wx:for="{{liste}}" wx:for-index="inse">
+  		  
+  		  
+  		  <view wx:if="{{index==3+jkla+jklb+jklc+jkld+jkle+numa+numb+numc+numd+inse}}" class="reportyu">
+  		        <view class="report-cont-other-head">养生建议</view>
+  		        
+  		       <view class ="report-cont-other-head-result-desc" wx:for="{{liste[inse]}}">
+  			   {{item}}
+  			   </view>
+  		    
+  		      </view>
+  		    </view>
+    <view wx:if="{{index==3+jkla+jklb+jklc+jkld+jkle+numa+numb+numc+numd+nume}}" class="reportyu">
+      <view class="report-cont-other-head-result gzh">
+        <view class="report-cont-header" >若需详细了解您的健康状况</view>
+		  <view class="report-cont-header" >可长按关注公众号</view>
+		  <view class="report-cont-header" >预约专业医生咨询</view>
+		  </view>
+      <view class ="report-cont-image">
+        <image style="width: 300rpx;height: 300rpx;" src="../../images/wechat.jpg" show-menu-by-longpress="true"></image>
+        <view  style="font-size: 30rpx;margin-top: 20rpx;">关注公众号</view>
+        <!-- <view>关注公众号</view> -->
+      </view>
+    </view>
+    <view class="btnBox">
+      <view class="btnPre {{current==1?'select':''}} {{index==3+jkla+jklb+jklc+jkld+jkle+numa+numb+numc+numd+nume?'selects':''}}" wx:if="{{shows==true}}" bindtap="toPrePage">上一页</view>
+      <view class="btnNext {{current==0?'select':''}} {{index==0?'selects':''}}" wx:if="{{showss==true}}"  bindtap="toNextPage">下一页</view>
+    </view>
+  </view>
+    
+</view>
+<view class="report-bottom">详情与最终解析权请询问医生。</view>
+<view class="report-bottom-box">TEL：香薷中医诊所客服热线 19011321860/19011328060</view>

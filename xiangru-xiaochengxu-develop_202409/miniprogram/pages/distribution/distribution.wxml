@@ -1,0 +1,164 @@
+<view class="report">
+  <view class="report-top">
+  <!-- <view class="fh">
+  <image src="../../images/fh.png"></image>
+  </view> -->
+    <view class="report-sec-header" bind:tap="hsheader">
+    <image src="../../images/4.png"></image>
+    <text style="font-size: 25rpx;">{{mobile}}</text>
+    </view>
+  
+  
+  </view>
+
+  <view class="report-cont" wx:if="{{index==0}}" >
+    <view class="reporthe">
+    <image src="../../images/5.png"></image>
+    <text>我的账户</text>
+    </view>
+    <!-- ---------------------------------------1------------------------------------------- -->
+    <view  class="reportyu">
+    
+      <view class="report-cont-header" bindtap="hhrsy"><image src="../../images/6.png"></image><text>合伙人收益汇总</text></view>
+      <view class="report-cont-header" bindtap="hhrsyzt"><image src="../../images/6.png"></image><text>直推客户消费明细</text></view>
+      <view class="report-cont-header" bindtap="hhrsyjt"><image src="../../images/6.png"></image><text>间推客户消费明细</text></view>
+      <view class="report-cont-header" bindtap="hhrsyyy"><image src="../../images/6.png"></image><text>邀约注册客户明细</text></view>
+      <view class="report-cont-header" style="margin-top: 35%;"><image src="../../images/6.png"></image><text>其他</text></view>
+      <view class="report-cont-tb">
+      <view><image src="../../images/1.png"></image><text>问题反馈</text></view>
+      <view><image src="../../images/2.png"></image><text>地址管理</text></view>
+      <view><image src="../../images/3.png"></image><text>常见问题</text></view>
+      </view>
+     
+     
+    </view>
+    
+  </view>
+  <view class="report-cont" wx:if="{{index==1}}" >
+    <view class="reporthe hs">
+    <image src="../../images/6.png"></image>
+    <text>合伙人收益汇总</text>
+    </view>
+    <!-- ---------------------------------------1------------------------------------------- -->
+    <view  class="reportyu reportyuhz" style="transform: translate({{translateX}}px, {{translateY}}px) scale({{scale}}) rotate({{rotate}}deg);"
+    bind:touchstart="touchStart"
+    bind:touchmove="touchMove"
+    bind:touchend="touchEnd" bind:tap='sjbd'>
+    <view>手机号:{{mobile}}</view>
+    <view>合伙人签约日:{{datePartner}}</view>
+      <view>绩效统计截止日:{{jieZhiRi}}</view>
+        <view>合伙人类型:{{partnerType}}</view>
+          <view>绩效总计:{{performance}}
+            <text>已兑现绩效:{{performanceAch}}</text>
+            <text>已兑现绩效自付部分:{{performanceAchZf}}</text>
+            <text>已兑现绩效医保部分:{{performanceAchYb}}</text>
+          </view>
+          
+            <view>未兑现绩效:{{performanceAchUn}}
+            <text>直推客户消费人次:{{csumDirPerson}}</text>
+            <text>直推客户消费小计:{{csumDirAmo}}</text>
+            <text>间推客户消费人次:{{csumIndirPerson}}</text>
+            <text>间推客户消费小计:{{csumIndirAmo}}</text>
+            </view>
+    </view>
+    
+  </view>
+  <view class="report-cont" wx:if="{{index==2}}" style="transform: translate({{translateX}}px, {{translateY}}px) scale({{scale}}) rotate({{rotate}}deg);"
+    bind:touchstart="touchStart"
+    bind:touchmove="touchMove"
+    bind:touchend="touchEnd" bind:tap='sjbd'>
+    <view class="reporthe hs">
+    <image src="../../images/6.png"></image>
+    <text>直推客户消费明细</text>
+    </view>
+    <!-- ---------------------------------------1------------------------------------------- -->
+    <view  class="reportyu reportyujj">
+      <view style="padding: 30rpx 20rpx;">直推客户消费人次:{{directCostPerson}}</view>
+    <view style="padding: 30rpx 20rpx;">直推客户消费小计:{{directCostAmount}}</view>
+   
+    
+      <view class="tbo">
+     <view>客户手机</view>
+     <view>邀约日期</view>
+     <view>消费日期 </view>
+     <view>消费金额</view>
+     </view>
+     <scroll-view scroll-y style="height:500rpx">
+     <view wx:for="{{detailVos}}" wx:key="index" class="tbt">
+      <view>{{item.mobile}}</view>
+        <view>{{item.dateInviter}}</view>
+          <view>{{item.costDate}}</view>
+            <view>{{item.costAmount}}</view>
+     </view>
+     </scroll-view>
+    
+    </view>
+    
+  </view>
+
+  <view class="report-cont" wx:if="{{index==3}}" style="transform: translate({{translateX}}px, {{translateY}}px) scale({{scale}}) rotate({{rotate}}deg);"
+    bind:touchstart="touchStart"
+    bind:touchmove="touchMove"
+    bind:touchend="touchEnd" bind:tap='sjbd'>
+    <view class="reporthe hs">
+    <image src="../../images/6.png"></image>
+    <text>间推客户消费明细</text>
+    </view>
+    <!-- ---------------------------------------1------------------------------------------- -->
+    <view  class="reportyu reportyujj">
+      <view style="padding: 30rpx 20rpx;">间推客户消费人次:{{indirectCostPerson}}</view>
+    <view style="padding: 30rpx 20rpx;">间推客户消费小计:{{indirectCostAmount}}</view>
+    <view style="padding: 30rpx 20rpx;">
+    
+     <view class="tbo">
+     <view>客户手机</view>
+     <view>邀约日期</view>
+     <view>消费日期 </view>
+     <view>消费金额</view>
+     </view>
+     <scroll-view scroll-y style="height:500rpx">
+     <view wx:for="{{jjdetailVos}}" wx:key="index" class="tbt">
+      <view>{{item.mobile}}</view>
+        <view>{{item.dateInviter}}</view>
+          <view>{{item.costDate}}</view>
+            <view>{{item.costAmount}}</view>
+     </view>
+     </scroll-view>
+    </view>
+    </view>
+    
+  </view>
+  <view class="report-cont" wx:if="{{index==4}}" style="transform: translate({{translateX}}px, {{translateY}}px) scale({{scale}}) rotate({{rotate}}deg);"
+    bind:touchstart="touchStart"
+    bind:touchmove="touchMove"
+    bind:touchend="touchEnd" bind:tap='sjbd'>
+    <view class="reporthe hs">
+    <image src="../../images/6.png"></image>
+    <text>邀约注册客户明细</text>
+    </view>
+    <!-- ---------------------------------------1------------------------------------------- -->
+    <view  class="reportyu reportyujj">
+      <view style="padding: 30rpx 20rpx;">邀约注册客户人数:{{actualCustomRegisterCount}}</view>
+
+   
+    
+      <view class="tbo">
+     <view style="width: 33.333%;">客户手机</view>
+     <view style="width: 33.333%;">注册日期</view>
+     <view style="width: 33.333%;">角色类型 </view>
+     </view>
+     <scroll-view scroll-y style="height:500rpx">
+     <view wx:for="{{yydetailVos}}" wx:key="index" class="tbts">
+      <view>{{item.mobile}}</view>
+        <view>{{item.registerDate}}</view>
+          <view>{{item.role}}</view>
+           
+     </view>
+     </scroll-view>
+    
+    </view>
+    
+  </view>
+</view>
+
+<view class="report-bottom-box">TEL：香薷中医诊所客服热线 19011321860/19011328060</view>
